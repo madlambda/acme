@@ -5,14 +5,15 @@ import "acme/acme.sh"
 
 fn gofmt(file) {
 	var newbody, errmsg, status <= gofmt $file
+	if $status != "0" {
+		return "", format("failed to format: %s", $errmsg)
+	}
 
-	abortonerr($status, $errmsg)
-
-	return $newbody
+	return $newbody, ""
 }
 
 fn main() {
-	simplefmt($gofmt)
+	var err <= acme_simplefmt($gofmt)
 }
 
 main()

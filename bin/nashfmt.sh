@@ -7,14 +7,19 @@ import "acme/acme.sh"
 
 fn nashfmt(file) {
 	var newbody, errmsg, status <= nashfmt $file
+	if $status != "0" {
+		return "", format("failed to format: %s", $errmsg)
+	}
 
-	abortonerr($status, format("error: %s", $errmsg))
-
-	return $newbody
+	return $newbody, ""
 }
 
 fn main() {
-	simplefmt($nashfmt)
+	var err <= acme_simplefmt($nashfmt)
+	if $err != "" {
+		io_println($err)
+		exit(1)
+	}
 }
 
 main()

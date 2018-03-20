@@ -39,37 +39,77 @@ fn acme_fname() {
 	return $fname
 }
 
-fn savefile(path, data) {
+fn acme_savefile(path, data) {
 	var _, status <= test -f $path
-
-	abortonerr($status, format("file exists: %s", $path))
+	if $status != "0" {
+		return format("file exists: %s", $path)
+	}
 
 	_, status <= echo -n $data > $path
+	if $status != "0" {
+		return format("failed to write content: %s", $path)
+	}
 
-	abortonerr($status, format("failed to write content: %s", $path))
+	return ""
 }
 
-fn mktmpfile() {
+fn acme_mktmpfile() {
 	var tmp, status <= mktemp /tmp/acme-XXXX
+	if $status != "0" {
+		return "", format("failed to create tmp file")
+	}
 
-	abortonerr($status, "failed to create tmp file")
-
-	return $tmp
+	return $tmp, ""
 }
 
-fn simplefmt(fmtfn) {
-	var tmpsrc <= mktmpfile()
-	var body <= acme_read("body")
+# acme_simplefmt is a common formatter routine.
+# It could be used to format code for languages that
+# support some kind of formatter utility.
+# The `fmtfn` parameter is a function that receives
+# a file path with the source code as argument
+# and return the modified body or an error.
+fn acme_simplefmt(fmtfn) {
+	var garbage = ()
 
-	savefile($tmpsrc, $body)
+	fn removeGarbage() {
+		for f in $garbage {
+			rm -f $f
+		}
+	}
 
-	var newbody <= $fmtfn($tmpsrc)
-	var tmpdst <= mktmpfile()
+	var tmpsrc, err <= acme_mktmpfile()
+	if $err != "" {
+		return $err
+	}
 
-	savefile($tmpdst, $newbody)
+	garbage <= append($garbage, $tmpsrc)
+	var err <= acme_savefile($tmpsrc, acme_read("body"))
+	if $err != "" {
+		removeGarbage()
+		return $err
+	}
+
+	var newbody, err <= $fmtfn($tmpsrc)
+	if $err != "" {
+		removeGarbage()
+		return $err
+	}
+
+	var tmpdst, err <= acme_mktmpfile()
+	if $err != "" {
+		removeGarbage()
+		return $err
+	}
+
+	garbage <= append($garbage, $tmpdst)
+
+	err <= acme_savefile($tmpdst, $newbody)
+	if $err != "" {
+		removeGarbage()
+		return $err
+	}
 
 	var _, status <= cmp -s $tmpsrc $tmpdst
-
 	if $status != "0" {
 		# code changed, we need to update buffer
 		
@@ -90,5 +130,6 @@ fn simplefmt(fmtfn) {
 		acme_write("ctl", "show")
 	}
 
-	rm -f $tmpsrc $tmpdst
+	removeGarbage()
+	return ""
 }
