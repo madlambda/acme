@@ -5,6 +5,7 @@ import "acme/acme.sh"
 
 fn gofmt(file) {
 	var newbody, errmsg, status <= gofmt $file
+
 	if $status != "0" {
 		return "", format("failed to format: %s", $errmsg)
 	}
