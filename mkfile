@@ -1,3 +1,3 @@
 
-install:V:
-	echo "installing  tools"
+install:QV:
+	echo 'installing tools'
