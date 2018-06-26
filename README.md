@@ -8,7 +8,18 @@ The idea is to do this on the ACME spirit, integrating
 with external tools. So this is basically a collection
 of tools to use on ACME.
 
+# Dependencies
+
+You will need the latest stable version of [nash](https://github.com/NeowayLabs/nash)
+to install and use the tools here.
+
 # Install
+
+Just run:
+
+```sh
+./install.sh
+```
 
 We try to apply a pretty nifty idea from the
 [ACME paper](http://www.vitanuova.com/inferno/papers/acme.pdf) here:
@@ -32,7 +43,7 @@ here they are only visible when  running editing commands.
 ```
 
 But instead of using /acme/edit we use $PLAN9/acme/edit.
-This does not seem a problem since defining a **PLAN9** environment
+This does not seem to be a problem since defining a **PLAN9** environment
 is expected to install [plan9port](https://github.com/9fans/plan9port)
 
 
