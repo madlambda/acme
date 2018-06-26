@@ -44,7 +44,15 @@ here they are only visible when  running editing commands.
 
 But instead of using /acme/edit we use $PLAN9/acme/edit.
 This does not seem to be a problem since defining a **PLAN9** environment
-is expected to install [plan9port](https://github.com/9fans/plan9port)
+is expected to install [plan9port](https://github.com/9fans/plan9port).
+
+If you really don't like the idea you can run:
+
+```sh
+./install.sh <somedir>
+```
+
+And it will install the tools there.
 
 
 
