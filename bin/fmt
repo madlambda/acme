@@ -37,9 +37,9 @@ fn main() {
 	var ext <= getext($fname)
 
 	if $ext == "sh" {
-		nashfmt.sh
+		nshfmt
 	} else if $ext == "go" {
-		gofmt.sh
+		gofmt
 	} else {
 		io_println("Extension %s not supported", $ext)
 		exit(1)
