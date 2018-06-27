@@ -54,6 +54,21 @@ If you really don't like the idea you can run:
 
 And it will install the tools there.
 
+# Tools
 
+So what tools comes in this project ?
+
+## Formatting
+
+We have formatting available for the following languages:
+
+* Go
+* Nash
+
+Just running **fmt** should automatically work. If you are having
+problems with **fmt** you can use:
+
+* **gofmt** for Go code
+* **nshfmt** for Nash code
 
 
