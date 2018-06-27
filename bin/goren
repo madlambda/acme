@@ -1,0 +1,9 @@
+#!/usr/bin/env nash
+
+if len($ARGS) == "1" {
+	io_println("usage: %s <new function name>", $ARGS[0])
+	exit("1")
+}
+
+var newname = $ARGS[1]
+A rn $newname
