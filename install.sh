@@ -2,7 +2,23 @@
 
 import io
 
+fn install_go_tools() {
+	io_println("installing Go tools")
+	
+	go get -u github.com/madlambda/A
+	go get -u golang.org/x/tools/cmd/guru
+	go get -u github.com/zmb3/gogetdoc
+	go get -u github.com/godoctor/godoctor
+	go get -u github.com/josharian/impl
+	go get -u golang.org/x/tools/cmd/gorename
+	go get -u github.com/fatih/gomodifytags
+	go get -u github.com/davidrjenni/reftools/cmd/fillstruct
+	go get -u github.com/davidrjenni/reftools/cmd/fillswitch
+}
+
 fn install(bindir) {
+	install_go_tools()
+	
 	io_println("installing acme nash lib")
 
 	nash -install ./acme

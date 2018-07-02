@@ -8,10 +8,15 @@ The idea is to do this on the ACME spirit, integrating
 with external tools. So this is basically a collection
 of tools to use on ACME.
 
+
 # Dependencies
 
 You will need the latest stable version of [nash](https://github.com/NeowayLabs/nash)
-to install and use the tools here.
+and [Go](https://golang.org/) to install and use the tools here.
+
+You also need go get to install binaries that can be found on your operating system
+(like adding $GOPATH/bin on your $PATH, or whatever works for you).
+
 
 # Install
 
@@ -71,4 +76,16 @@ problems with **fmt** you can use:
 * **gofmt** for Go code
 * **nshfmt** for Nash code
 
+## Go
 
+After installing you will have access to all the functionality
+described [here](https://github.com/madlambda/A). We provide more
+familiar aliases like:
+
+* godoc = A doc
+* godef = A def
+* goref = A refs
+* goren <name> = A rn <name>
+* gocs = A cs
+* gopeers = A peers
+* goshare = A share
