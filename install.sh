@@ -14,6 +14,7 @@ fn install_go_tools() {
 	go get -u github.com/fatih/gomodifytags
 	go get -u github.com/davidrjenni/reftools/cmd/fillstruct
 	go get -u github.com/davidrjenni/reftools/cmd/fillswitch
+	go get -u golang.org/x/tools/cmd/goimports
 }
 
 fn install(bindir) {
