@@ -73,8 +73,8 @@ We have formatting available for the following languages:
 Just running **fmt** should automatically work. If you are having
 problems with **fmt** you can use:
 
-* **gofmt** for Go code
-* **nshfmt** for Nash code
+* **gof** for Go code
+* **nashf** for Nash code
 
 ## Go
 
