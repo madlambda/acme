@@ -89,3 +89,17 @@ familiar aliases like:
 * gocs = A cs
 * gopeers = A peers
 * goshare = A share
+
+## Git
+
+For people that have some mental problems and need to commit and push every
+small stable step they give there is the **gitcp** command that, given a message,
+will commit all changes with that message and already push it too.
+
+Example:
+
+```
+gitcp 'my awesome message'
+```
+
+And it is done =D. This doc has been commited using this, so it works =P.

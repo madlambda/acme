@@ -1,0 +1,10 @@
+#!/usr/bin/env nash
+
+if len($ARGS) == "1" {
+	io_println("usage: %s <commit message>", $ARGS[0])
+	exit("1")
+}
+
+var msg = $ARGS[1]
+git commit -a -m $msg
+git push
