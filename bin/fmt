@@ -3,7 +3,7 @@
 # universal formatter
 
 import "io"
-import "acme/acme.sh"
+import "acme/acme"
 
 fn abortonerr(status, msg) {
 	if $status != "0" {
