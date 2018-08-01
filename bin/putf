@@ -1,0 +1,18 @@
+#!/usr/bin/env nash
+
+import "io"
+import "acme/acme"
+
+var out, status <= fmt
+
+if $status != "0" {
+	io_println("error formatting code: %s", $out)
+	io_println("file will be saved anyway")
+}
+
+var err <= acme_put()
+
+if $err != "" {
+	io_println("error saving file: %s", $err)
+	exit("1")
+}
