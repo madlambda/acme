@@ -92,7 +92,7 @@ familiar aliases like:
 
 ## Git
 
-For people that have some mental problems and need to commit and push every
+For people who need to commit and push every
 small stable step they give there is the **gitcp** command that, given a message,
 will commit all changes with that message and already push it too.
 
